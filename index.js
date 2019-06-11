@@ -19,6 +19,7 @@ function getDogs(dogNumber) {
 function extractData(jsonData){
   jsonData.message.forEach(dogs=>{
     console.log(dogs);
+    $(".dogsList").append(createTemplate(dogs));
   });
 }
 
@@ -26,13 +27,17 @@ function extractData(jsonData){
 function handleSubmit() {
   $('#js-number-select').submit(function(event) {
     event.preventDefault();
-    const dogNumber = 3;
-    if ($('.js-number-input').val()){
-      dogNumber = $('.js-number-input').val();
-    }
+    const dogNumber = $('.js-number-input').val();
     getDogs(dogNumber);
 
   });
+}
+
+function createTemplate(dogLink){
+  `<section>
+  <img src="${dogLink}" alt="Dog Pictures>
+</section>
+`;
 }
 
 handleSubmit();
