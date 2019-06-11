@@ -26,9 +26,10 @@ function extractData(jsonData){
 function handleSubmit() {
   $('#js-number-select').submit(function(event) {
     event.preventDefault();
-    console.log(dogNumber);
     const dogNumber = $('.js-number-input').val();
     getDogs(dogNumber);
 
   });
 }
+
+handleSubmit();
