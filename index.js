@@ -19,7 +19,7 @@ function getDogs(dogNumber) {
 function extractData(jsonData){
   jsonData.message.forEach(dogs=>{
     console.log(dogs);
-    $(".dogsList").append(createTemplate(dogs));
+    $('.dogsList').append(createTemplate(dogs));
   });
 }
 
@@ -34,10 +34,13 @@ function handleSubmit() {
 }
 
 function createTemplate(dogLink){
-  `<section>
-  <img src="${dogLink}" alt="Dog Pictures>
-</section>
-`;
+  console.log(dogLink);
+  console.log('creating a template!');
+  let template =`<section>
+    <img src="${dogLink}" alt="Dog Pictures">
+  </section>
+      `;
+  return template;
 }
 
 handleSubmit();
