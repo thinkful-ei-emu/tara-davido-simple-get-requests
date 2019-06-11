@@ -1,24 +1,34 @@
+'use strict';
+
 function getDogs(dogNumber) {
   fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
     .then(response=> response.json())
     .then(jsonData => {
       extractData(jsonData);
+      console.log(jsonData);
     })
     .catch(error => {
       console.log(error);
-    })
+    });
 
-    //response will be an object
-    //message property is an array of links
-    //loop through that array and print values
+  //response will be an object
+  //message property is an array of links
+  //loop through that array and print values
 }
 
-function extractData
+function extractData(jsonData){
+  jsonData.message.forEach(dogs=>{
+    console.log(dogs);
+  });
+}
+
 
 function handleSubmit() {
   $('#js-number-select').submit(function(event) {
     event.preventDefault();
-    dogNumber = ${'.js-number-input'}.val();
+    console.log(dogNumber);
+    const dogNumber = $('.js-number-input').val();
     getDogs(dogNumber);
-  })
+
+  });
 }
