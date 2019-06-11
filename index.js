@@ -1,15 +1,30 @@
 'use strict';
 
-function getDogs(dogNumber) {
-  fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
-    .then(response=> response.json())
-    .then(jsonData => {
-      extractData(jsonData);
-      console.log(jsonData);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+function getDogs(dogNumber, dogBreed) {
+  if (dogBreed) {
+    fetch(`https://dog.ceo/api/breed/${dogBreed}/images/random/${dogNumber}`)
+      .then(response => response.json())
+      .then(jsonData => {
+        extractData(jsonData);
+        console.log(jsonData);
+      })
+      .catch(error => {
+        console.log(error);
+        alert("Breed not found");
+      })
+  }
+
+  else {
+    fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
+      .then(response=> response.json())
+      .then(jsonData => {
+        extractData(jsonData);
+        console.log(jsonData);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   //response will be an object
   //message property is an array of links
@@ -28,7 +43,8 @@ function handleSubmit() {
   $('#js-number-select').submit(function(event) {
     event.preventDefault();
     const dogNumber = $('.js-number-input').val();
-    getDogs(dogNumber);
+    const dogBreed = $('.js-breed-input').val();
+    getDogs(dogNumber, dogBreed);
 
   });
 }
