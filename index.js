@@ -11,9 +11,10 @@ function getDogs(dogNumber, dogBreed) {
       .catch(error => {
         console.log(error);
         alert("Breed not found");
-      })
-  }
+      }
 
+      );
+  }
   else {
     fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
       .then(response=> response.json())
